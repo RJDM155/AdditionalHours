@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Hours</title>
+    <link rel="stylesheet" href="/css/table.css">
+    <script defer src="/JS/table.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>Manage hours</h1>
+        </div>
+        <div class="header-actions">
+            <a href="/guide2" class="about-link">Guide</a>
+            <button class="logout-btn">
+                <a href="/"><span class="material-symbols-outlined">exit_to_app</span></a> 
+            </button>
+        </div>
+    </header>
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <nav>
+                <ul>
+                    <button class="menu-toggle" id="menuToggle"><span class="material-symbols-outlined">menu</span></button>
+                    <li><a href="/form" class="firstIcon"><span class="material-symbols-outlined">person_add</span><span class="label">Add User</span></a></li>
+                    <li><a href="/home"><span class="material-symbols-outlined">home</span><span class="label">Home</span></a></li>
+                    <li><a href="/about"><span class="material-symbols-outlined">info</span><span class="label">About</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main">
+            <h2>Employee Data</h2>
+            <table class="employee-table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>username</th>
+                        <th>email</th>
+                        <th>hours worked</th>
+                        <th>weekly payment</th>
+                        <th>actions</th>
+                        <th>Gross pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% employees.forEach(employee => { %>
+                        <tr>
+                            <td><%= employee.id %></td>
+                            <td><%= employee.username %></td>
+                            <td><%= employee.email %></td>
+                            <td><%= employee.hours_worked %></td>
+                            <td><%= employee.pay_rate %></td>
+                            <td>
+                                <!-- Clase añadida para los estilos de botón -->
+                                <button class="calculate-btn" onclick="calculatePay(<%= employee.id %>, <%= employee.hours_worked %>, <%= employee.pay_rate %>)">
+                                    Calculate
+                                </button>
+                                <button class="update-btn" onclick="openUpdateModal(<%= employee.id %>, '<%= employee.username %>', '<%= employee.email %>', <%= employee.hours_worked %>, <%= employee.pay_rate %>)">
+                                    Update
+                                </button>
+                            </td>
+                            <!-- El ID del campo 'to-pay' sigue igual para que sea dinámico -->
+                            <td id="to-pay-<%= employee.id %>"></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Extra Hours Management Program. All rights reserved.</p>
+    </footer>
+
+    <div id="updateModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeUpdateModal()">&times;</span>
+            <h3>Update Employee</h3>
+            <form id="updateForm">
+                <input type="hidden" id="updateId">
+                <label for="updateUsername">Username:</label>
+                <input type="text" id="updateUsername">
+                <label for="updateEmail">Email:</label>
+                <input type="email" id="updateEmail">
+                <label for="updateHours">Hours Worked:</label>
+                <input type="number" id="updateHours">
+                <label for="updatePayRate">Pay Rate:</label>
+                <input type="number" id="updatePayRate">
+                <button type="button" onclick="saveUpdatedData()">Save</button>
+                <button type="button" class="delete-btn" onclick="deleteEmployee()">Delete</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

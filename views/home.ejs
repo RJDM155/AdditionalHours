@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <script defer src="/JS/index.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img class="logo-image" src="images/logo.png" >
+        </div>
+        <h2 class="name-logo">POLLOSTAL-IVAN</h2>
+        <div class="header-actions">
+            <a href="/guide1" class="about-link">Guide</a>
+            <button class="logout-btn">
+                <a href="/"><span class="material-symbols-outlined">exit_to_app</span></a>
+            </button>
+        </div>
+    </header>
+    
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <nav>
+                <ul>
+                    <button class="menu-toggle" id="menuToggle"><span class="material-symbols-outlined">menu</span></button>
+                    <li><a href="/form" class="firstIcon"><span class="material-symbols-outlined">person_add</span><span class="label">Add User</span></a></li>
+                    <li><a href="/hours"><span class="material-symbols-outlined">app_registration</span><span class="label">Edit Hours</span></a></li>
+                    <li><a href="/about"><span class="material-symbols-outlined">info</span><span class="label">About</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main">
+            <div class="content-box box1">
+                <a href="/form" class="card-link">
+                    <span>ADD EMPLOYEE</span>
+                </a>
+            </div>
+            <div class="content-box box2">
+                <a href="/hours" class="card-link">
+                    <span>EDIT HOURS</span>
+                </a>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <p><p>&copy; 2024 Extra Hours Management Program. All rights reserved.</p></p>
+    </footer>
+</body>
+</html>
